@@ -6,7 +6,7 @@ Will convert your server into a fake Open SMTP Relay
 Sends logged data to Slack for analysis
 
 ## Usage:
-`python snakeoil.py <slack_token>
+`python snakeoil.py <slack_token>`
 
 Default port is 2525, to create a mail server I would recommend using iptables to route traffic from port 25 to 2525 like so:
 `iptables -t nat -A PREROUTING -p tcp --dport 25 -j REDIRECT --to-port 2525`
