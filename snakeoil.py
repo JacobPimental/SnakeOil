@@ -36,6 +36,7 @@ class SnakeOil(SMTPServer):
                  'body_text':None}
         attachments = {}
         for p in e.walk():
+            parts['Reply-To'] = p.get('Reply-To', '')
             f = p.get_filename()
             content_type = p.get_content_type()
             if f:
@@ -169,6 +170,7 @@ class SnakeOil(SMTPServer):
                                                       headers['From']) +
                         'Rcpts : {}\nSubject : {}'.format(headers['Recipients'],
                                                           headers['Subject']) +
+                        'Reply-To: {}'.format(parts['Reply-To']) +
                         'Num Links : {}\nNum Att : {}'.format(len(links),
                                                               len(parts['attachments'])))
             self.client.chat_postMessage(channel='#general',
